@@ -29,12 +29,6 @@ if (isset($_POST['submit'])){
                     echo "<script> alert('Dangerous input detected!') </script>";
                     $validate_only === true;
                     die;
-                    // if ($should_strip === true) {
-                    //     $output = str_replace($token, "", $output);
-                    // } else {
-                    //     $output = str_replace($token, "\\" . $token, $output);
-                    // }
-            }
         }
         return $output;
     }
