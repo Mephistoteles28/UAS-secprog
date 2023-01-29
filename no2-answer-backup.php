@@ -19,7 +19,7 @@ if (isset($_POST['submit'])){
         } else if ($attack_mode === "RCE") {
             $dangerous_tokens = $rce_tokens;
         } else {
-            throw new Exception("Invalid attack mode.");
+            echo "<script> alert('Invalid attack mode') </script>";
         }
         // check for dangerous tokens
         foreach ($dangerous_tokens as $token) {
