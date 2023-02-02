@@ -24,21 +24,28 @@ if (isset($_POST['submit'])){
         // check for dangerous tokens
         foreach ($dangerous_tokens as $token) {
             // if $output ada yang berbahaya
+            if($validate_only === true){
+                throw new Exception("Dangerous input detected.");
+            }
+
             if (strpos($output, $token) !== false) {
-                    echo "<script> alert('Dangerous input detected!') </script>";
+                // echo "<script> alert('Dangerous input detected!') </script>";
+                    throw new Exception("Dangerous input detected.");
                     $validate_only === true;
                     die;
-                    // if ($should_strip === true) {
-                    //     $output = str_replace($token, "", $output);
-                    // } else {
-                    //     $output = str_replace($token, "\\" . $token, $output);
-                    // }
             }
         }
         return $output;
     }
-    $input = $_POST['message'];
-    $input = secureInput($input, "ALL", true, false);
+    try{
+        $input = $_POST['message'];
+        $input = secureInput($input, "ALL", true, false);
+        echo "SecuredInput: ".$input;
+    }
+    catch(Exception $i){
+        echo "Warning: ".$i->getMessage();
+      }
+
     echo $input;
 }
 

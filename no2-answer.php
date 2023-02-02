@@ -26,7 +26,8 @@ if (isset($_POST['submit'])){
         foreach ($dangerous_tokens as $token) {
             // if $output ada yang berbahaya
             if (strpos($output, $token) !== false) {
-                    echo "<script> alert('Dangerous input detected!') </script>";
+                    throw new Exception("Dangerous input detected.");
+                    // echo "<script> alert('Dangerous input detected!') </script>";
                     $validate_only === true;
                     die;
         }
@@ -35,6 +36,7 @@ if (isset($_POST['submit'])){
     $input = $_POST['message'];
     $input = secureInput($input, "ALL", true, false);
     echo $input;
+}
 }
 
 ?>
