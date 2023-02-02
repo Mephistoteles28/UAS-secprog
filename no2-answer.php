@@ -43,7 +43,7 @@ if (isset($_POST['submit'])){
         echo "SecuredInput: ".$input;
     }
     catch(Exception $i){
-        echo "Warning: ".$i->getMessage();
+        echo "<h3><b> Warning: ".$i->getMessage()."</b></h3>";
       }
 
     echo $input;
